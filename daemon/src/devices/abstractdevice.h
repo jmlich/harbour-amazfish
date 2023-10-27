@@ -106,6 +106,7 @@ public:
     virtual void navigationRunning(bool running);
     virtual void navigationNarrative(const QString &flag, const QString &narrative, const QString &manDist, int progress);
     virtual QStringList supportedDisplayItems() const;
+    virtual QStringList getFileList(const QString &path);
 
     //signals    
     Q_SIGNAL void message(const QString &text);

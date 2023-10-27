@@ -299,6 +299,14 @@ void DaemonInterface::connectDatabase()
     }
 }
 
+QStringList DaemonInterface::getFileList(const QString& path) {
+    if (!iface || !iface->isValid()) {
+        return QStringList();
+    }
+    QDBusReply<QStringList> reply = iface->call(QStringLiteral("getFileList"), path);
+    return reply;
+}
+
 void DaemonInterface::updateCalendar()
 {
     if (!iface || !iface->isValid()) {

@@ -605,6 +605,14 @@ QString DeviceInterface::prepareFirmwareDownload(const QString &path)
     return QString();
 }
 
+QStringList DeviceInterface::getFileList(const QString &path)
+{
+    if (m_device) {
+        m_device->getFileList(path);
+    }
+    return QStringList();
+}
+
 bool DeviceInterface::startDownload()
 {
     qDebug() << Q_FUNC_INFO;

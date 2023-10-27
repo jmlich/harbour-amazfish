@@ -437,3 +437,37 @@ void PinetimeJFDevice::sendWeather(CurrentWeather *weather)
         w->sendWeather(weather);
     }
 }
+
+QStringList PinetimeJFDevice::getFileList(const QString &path) {
+    qDebug() << "===================================== " << Q_FUNC_INFO << path;
+
+    QStringList list;
+
+    AdafruitBleFsService* blefs = qobject_cast<AdafruitBleFsService*>(service(AdafruitBleFsService::UUID_SERVICE_FS));
+    AbstractFirmwareInfo *info = firmwareInfo(QByteArray()); // will report invalid firmware
+    if (blefs) {
+        AdafruitBleFsOperation *operation = new AdafruitBleFsOperation(blefs, info);
+        if (operation) {
+qDebug() << "=1";
+            auto listDirectoryFuture = operation->listDirectory(path.toStdString());
+qDebug() << "=2";
+            listDirectoryFuture.wait();
+qDebug() << "=3";
+            auto vec = listDirectoryFuture.get();
+qDebug() << "=4";
+
+            qDebug() << Q_FUNC_INFO << " vec.size(): " << vec.size(); 
+            for (auto& file : vec) {
+                QString fn = QString::fromStdString(file.name);
+                qDebug() << "\n\t" << (file.isDirectory ? "Directory" : "File") << " : " << fn << "\n\t Timestamp : " << file.timestamp;
+                qDebug() << fn;
+                list.push_back(fn);
+            }
+
+
+        }
+
+    }
+
+    return QStringList();
+}

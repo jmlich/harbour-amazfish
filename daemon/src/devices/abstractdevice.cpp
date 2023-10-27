@@ -178,3 +178,8 @@ QStringList AbstractDevice::supportedDisplayItems() const
 {
     return QStringList();
 }
+
+QStringList AbstractDevice::getFileList(const QString &path) {
+    qDebug() << Q_FUNC_INFO << path;
+    return QStringList();
+}

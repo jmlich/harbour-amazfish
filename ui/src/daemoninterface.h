@@ -37,6 +37,7 @@ public:
     KDbConnection *dbConnection();
 
     //Functions provided by services
+    Q_INVOKABLE QStringList getFileList(const QString &path);
     Q_INVOKABLE QString prepareFirmwareDownload(const QString &path);
     Q_INVOKABLE bool startDownload();
     Q_INVOKABLE void downloadSportsData();

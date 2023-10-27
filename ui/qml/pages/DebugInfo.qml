@@ -136,6 +136,17 @@ PagePL {
         }
 
         ButtonPL {
+            text: qsTr("File system")
+//            visible: supportsFeature(Amazfish.FEATURE_BLEFS)
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width * 0.8
+            onClicked: {
+                app.pages.push(Qt.resolvedUrl("BleFsPage.qml"));
+
+            }
+        }
+
+        ButtonPL {
             text: qsTr("Test Notification")
             visible: supportsFeature(Amazfish.FEATURE_ALERT)
             anchors.horizontalCenter: parent.horizontalCenter
