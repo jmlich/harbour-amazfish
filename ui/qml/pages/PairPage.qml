@@ -21,7 +21,11 @@ PageListPL {
     property QtObject _bluetoothManager : BluezQt.Manager
 
     function startDiscovery() {
-        if (!adapter || adapter.discovering) {
+        if (!adapter) {
+            showMessage(qsTr("Bluetooth adapter is not available"))
+            return
+        }
+        if (adapter.discovering) {
             return
         }
         adapter.startDiscovery()
@@ -150,6 +154,7 @@ PageListPL {
 
         PageMenuItemPL {
             enabled: !DaemonInterfaceInstance.pairing
+            iconSource: adapter && adapter.discovering ? "" : (styler.iconDeviceScan !== undefined ? styler.iconDeviceScan : "")
             text: adapter && adapter.discovering
                   ? qsTr("Stop scanning")
                   : qsTr("Scan for devices")

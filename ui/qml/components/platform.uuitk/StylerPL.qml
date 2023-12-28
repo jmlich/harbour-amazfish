@@ -62,6 +62,7 @@ QtObject {
     property string iconBattery: "image://theme/battery-good-symbolic"
     property string iconSteps: "../../pics/custom-icons/icon-m-steps2.png"
     property string iconHeartrate: "../../pics/custom-icons/icon-m-heartrate2.png"
+    property string iconDeviceScan: "image://theme/toolkit_input-search"
 
 
     property string iconStravaLogin: "image://theme/user-admin"
@@ -114,7 +115,7 @@ QtObject {
     property string iconDiagnostic: "image://theme/info"                                  // "Debug Info"
     property string iconFavoriteSelected: "image://theme/bookmark"                        // "Donate"
 
-
+    property string customIconPrefix: "../../pics/custom-icons/"
 
     // item sizes
     property real themeItemSizeLarge: themeFontSizeLarge * 3
