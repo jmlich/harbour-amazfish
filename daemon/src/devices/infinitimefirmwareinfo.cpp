@@ -23,7 +23,7 @@ bool InfinitimeFirmwareInfo::supportedOnDevice(const QString &device) const
 
 void InfinitimeFirmwareInfo::determineFirmwareType()
 {
-    qDebug() << "Determining firmware type";
+    qDebug() << Q_FUNC_INFO << "Determining firmware type";
     m_type = Invalid;
 
     if (m_bytes.startsWith(UCHARARR_TO_BYTEARRAY(ZIP_HEADER))) {
@@ -36,12 +36,12 @@ void InfinitimeFirmwareInfo::determineFirmwareType()
             auto* root = zip.directory();
             if(root->entry("manifest.json") != nullptr)
             {
-                qDebug() << "DFU file detected";
+                qDebug() << Q_FUNC_INFO << "DFU file detected";
                 m_type = Firmware;
             }
             else if(root->entry("resources.json") != nullptr)
             {
-                qDebug() << "Resource file detected";
+                qDebug() << Q_FUNC_INFO << "Resource file detected";
                 m_type = Res_Compressed;
             }
         }
