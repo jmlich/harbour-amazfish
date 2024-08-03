@@ -60,7 +60,8 @@ public:
         SETTING_DEVICE_DATE,
         SETTING_DEVICE_TIME,
         SETTING_DEVICE_UNIT,
-        SETTING_DISCONNECT_NOTIFICATION
+        SETTING_DISCONNECT_NOTIFICATION,
+        SETTING_DEVICE_REALTIME_HRM_MEASUREMENT
     };
     Q_ENUM(Settings)
 
@@ -121,6 +122,7 @@ public:
     virtual void requestScreenshot();
     virtual QStringList supportedDisplayItems() const;
     virtual QStringList getFileList(const QString &path);
+    virtual void immediateAlert(int level);
 
     //signals    
     Q_SIGNAL void message(const QString &text);

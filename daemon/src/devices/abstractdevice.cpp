@@ -202,3 +202,7 @@ QStringList AbstractDevice::getFileList(const QString &path) {
     qDebug() << Q_FUNC_INFO << path;
     return QStringList();
 }
+
+void AbstractDevice::immediateAlert(int level) {
+    qDebug() << Q_FUNC_INFO << level;
+}

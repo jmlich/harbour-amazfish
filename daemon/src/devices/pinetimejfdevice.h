@@ -37,6 +37,8 @@ public:
     void sendWeather(CurrentWeather *weather) override;
 
     virtual QStringList getFileList(const QString &path) override;
+    virtual void applyDeviceSetting(Settings s);
+    virtual void immediateAlert(int level) override;
 
 protected:
     void onPropertiesChanged(QString interface, QVariantMap map, QStringList list);
