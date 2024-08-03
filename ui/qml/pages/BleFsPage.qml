@@ -55,6 +55,7 @@ PagePL {
     }
 
     function reloadPath() {
+        console.log("reloadPath: " + path)
         var list = DaemonInterfaceInstance.getFileList(path)
         filesModel.clear();
         for (var i = 0; i < list.length; i++) {

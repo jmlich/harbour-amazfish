@@ -30,6 +30,12 @@ PagePL {
             }
         }
         PageMenuItemPL {
+            text: qsTr("File system")
+            onClicked: app.pages.push(Qt.resolvedUrl("BleFsPage.qml"));
+
+        }
+
+        PageMenuItemPL {
             text: qsTr("Download File")
             onClicked: app.pages.push(Qt.resolvedUrl("BipFirmwarePage.qml"))
         }
