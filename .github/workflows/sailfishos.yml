@@ -23,10 +23,7 @@ jobs:
       run: docker pull coderus/sailfishos-platform-sdk:$OS_VERSION && mkdir output
 
     - name: Build ${{ matrix.arch }}
-      run: docker run --rm --privileged -v $PWD:/share coderus/sailfishos-platform-sdk:$OS_VERSION \
-	-v $GITHUB_WORKSPACE:/workspace \
-	-v $GITHUB_ACTION_PATH:/action \
-       /bin/bash -c "
+      run: docker run --rm --privileged -v $PWD:/share coderus/sailfishos-platform-sdk:$OS_VERSION -v $GITHUB_WORKSPACE:/workspace -v $GITHUB_ACTION_PATH:/action /bin/bash -c "
 	    mkdir -p build ;
 	    cd build ;
 	    cp -r /workspace/* .
