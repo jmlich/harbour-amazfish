@@ -23,6 +23,7 @@ jobs:
 
     - name: Build ${{ matrix.arch }}
       run: docker run --rm --privileged -v $PWD:/workspace coderus/sailfishos-platform-sdk:$OS_VERSION /bin/bash -c "
+	    set -x
 	    mkdir -p build ;
 	    cd build ;
 	    cp -r /workspace/* . ;
