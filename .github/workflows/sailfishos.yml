@@ -18,12 +18,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
 	submodules: recursive
-
     - name: Prepare
       run: docker pull coderus/sailfishos-platform-sdk:$OS_VERSION && mkdir output
 
     - name: Build ${{ matrix.arch }}
-      run: docker run --rm --privileged -v $PWD:/workspace -v $PWD:/action coderus/sailfishos-platform-sdk:$OS_VERSION /bin/bash -c "
+      run: docker run --rm --privileged -v $PWD:/workspace coderus/sailfishos-platform-sdk:$OS_VERSION /bin/bash -c "
 	    mkdir -p build ;
 	    cd build ;
 	    cp -r /workspace/* .
@@ -31,7 +30,7 @@ jobs:
 	    sb2 -t SailfishOS-$OS_VERSION-${{ matrix.arch }} -R zypper --non-interactive refresh ;
 	    sb2 -t SailfishOS-$OS_VERSION-${{ matrix.arch }} -R zypper --non-interactive in -y mpris-qt5-devel libkf5archive-devel kcoreaddons-devel kdb-devel libKDb3-3 mkcal-qt5-devel libicu-devel pulseaudio-devel ninja;
 	    mb2 -t SailfishOS-$OS_VERSION-${{ matrix.arch }} build ;
-	    cp -r RPMS/*.rpm /workspace/RPMS
+	    cp -r RPMS/*.rpm /workspace/output
 	"
     - name: Upload RPM (${{ matrix.arch }})
       uses: actions/upload-artifact@v4
