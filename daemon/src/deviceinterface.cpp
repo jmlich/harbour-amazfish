@@ -20,6 +20,11 @@
 #include <pulse/error.h>
 #endif
 
+#ifdef UUITK_EDITION
+#include <libusermetricsinput/MetricManager.h>
+#endif
+
+
 static const char *SERVICE = SERVICE_NAME_AMAZFISH;
 static const char *PATH = "/application";
 
@@ -521,17 +526,38 @@ void DeviceInterface::slot_informationChanged(AbstractDevice::Info key, const QS
     qDebug() << Q_FUNC_INFO << key << val;
 
     //Handle notification of low battery
-    if (key == AbstractDevice::INFO_BATTERY) {
-        int battery_level = val.toInt();
-        if (battery_level != m_lastBatteryLevel) {
+    switch(key) {
+        case AbstractDevice::INFO_BATTERY:
+            int battery_level = val.toInt();
+            if (battery_level != m_lastBatteryLevel) {
 
-            log_battery_level(battery_level);
+                log_battery_level(battery_level);
 
-            if (battery_level <= 10 && battery_level < m_lastBatteryLevel && AmazfishConfig::instance()->appNotifyLowBattery()) {
-                sendAlert("Amazfish", tr("Low Battery"), tr("Battery level now ") + QString::number(battery_level) + "%");
+                if (battery_level <= 10 && battery_level < m_lastBatteryLevel && AmazfishConfig::instance()->appNotifyLowBattery()) {
+                    sendAlert("Amazfish", tr("Low Battery"), tr("Battery level now ") + QString::number(battery_level) + "%");
+                }
+                m_lastBatteryLevel = battery_level;
             }
-            m_lastBatteryLevel = battery_level;
-        }
+        break;
+
+#ifdef UUITK_EDITION
+        case AbstractDevice::INFO_STEPS:
+            bool conversionOk = false;
+            int steps = val.toInt(&conversionOk);
+            if (conversionOk) {
+                MetricManagerPtr manager = MetricManager::getInstance();
+                if (manager) {
+                    MetricParameters params("uk.co.piggz.harbour-amazfish");
+                    params.formatString(qsTr("<b>%1</b> steps made today"))
+                          .emptyDataString(qsTr("No steps measured today"));
+                    MetricPtr metric = manager->add(params);
+                    if (metric) {
+                        metric->update(val);
+                    }
+                }
+            }
+        break;
+#endif
     }
 
     emit informationChanged(key, val);
