@@ -24,7 +24,8 @@ public:
         Spo2Sleep = 10,
         BodyTemperature = 11,
         StressAuto = 12,
-        StressManual = 13
+        StressManual = 13,
+        StressSummary = 14
     };
     Q_ENUM(Type)
 

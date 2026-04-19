@@ -197,6 +197,10 @@ QVariant DataSource::data(Type type, const QDate &day)
                     day.toString("yyyy-MM-ddT00:00:00") + "' AND stress_timestamp_dt <= '" +
                     day.toString("yyyy-MM-ddT23:59:59") +  "' AND stress_type = 1" +
                     " ORDER BY stress_timestamp_dt ASC";
+        } else if (type == DataSource::StressSummary) {
+            qry = "SELECT date(stress_timestamp_dt), sum(stress_value) / count(stress_value) FROM stress WHERE date(stress_timestamp_dt) >= date('" +
+                    day.toString("yyyy-MM-ddT00:00:00") + "','-10 day') AND stress_timestamp_dt <= '" +
+                    day.toString("yyyy-MM-ddT23:59:59") +  "' GROUP BY date(stress_timestamp_dt) ORDER BY date(stress_timestamp_dt) ASC";
         }
 
         qDebug() << qry;

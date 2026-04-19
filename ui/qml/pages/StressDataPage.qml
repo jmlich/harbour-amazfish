@@ -39,7 +39,7 @@ PagePL {
             font.pixelSize: styler.themeFontSizeExtraLarge * 3
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width
-            text: qsTr("Average: %1%").arg(Math.round(avgstress))
+            text: qsTr("Avg: %1%").arg(Math.round(avgstress))
             horizontalAlignment: Text.AlignHCenter
         }
 
@@ -138,6 +138,34 @@ PagePL {
 
         }
 
+        Graph {
+            id: graphStressSummary
+            graphTitle: qsTr("Stress Summary")
+            graphHeight: 300
+
+            axisX.mask: "dd-MM"
+            axisY.units: qsTr("%")
+            type: DataSource.StressSummary
+            graphType: bar
+
+            minY: 1
+            maxY: 100
+
+            colorMap: [
+                {"limit": 39, "color": "lightblue"},
+                {"limit": 59, "color": "green"},
+                {"limit": 79, "color": "orange"},
+            ]
+            defaultColor: "red"
+
+            valueConverter: function(value) {
+                return value.toFixed(0);
+            }
+            onClicked: {
+                updateGraph(day);
+            }
+        }
+
     }
 
     function calculateZones() {
@@ -179,6 +207,7 @@ PagePL {
 
     function updateGraphs() {
         graphStressAuto.updateGraph(day);
+        graphStressSummary.updateGraph(day);
         calculateZones();
     }
 
