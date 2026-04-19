@@ -276,7 +276,7 @@ PagePL {
             visible: supportsData(Amazfish.TYPE_STRESS)
 
             contentItem: Image {
-                source: "../page-icons/icon-page-spo2.png"
+                source: "../page-icons/icon-page-stress.png"
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
             }
