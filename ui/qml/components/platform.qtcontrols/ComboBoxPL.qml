@@ -27,6 +27,7 @@ Item {
     anchors.rightMargin: styler.themeHorizontalPageMargin
     height: Math.max(lab.height, val.height) + desc.height + desc.anchors.topMargin
 
+    property bool   inForm
     property int   currentIndex
     property alias description: desc.text
     property alias model: val.model
