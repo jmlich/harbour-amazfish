@@ -72,7 +72,7 @@ bool FetchStressAutoOperation::saveRecords(QVector<StressRecord> recs, QDateTime
         int count;
 
         if (m_conn && m_conn->isDatabaseUsed()) {
-            KDbEscapedString sql = KDbEscapedString("SELECT stress_id FROM stress WHERE stress_timestamp=%1").arg(r.timestamp.toMSecsSinceEpoch() / 1000);
+            KDbEscapedString sql = KDbEscapedString("SELECT stress_id FROM stress WHERE stress_timestamp=%1 AND stress_type=1").arg(r.timestamp.toMSecsSinceEpoch() / 1000);
             tristate success = m_conn->querySingleNumber(sql, &count);
             qDebug() << sql << success << count;
 
