@@ -13,7 +13,7 @@ GraphData {
     property alias defaultColor: graphData.defaultColor
 
     function updateGraph(day) {
-        var dataPoints = DataSource.data(type, day);
+        var dataPoints = dataSource.data(type, day);
         setPoints(dataPoints);
     }
 }

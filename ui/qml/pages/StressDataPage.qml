@@ -166,6 +166,22 @@ PagePL {
             }
         }
 
+        LabelPL {
+            id: lblManualHeader
+            font.pixelSize: styler.themeFontSizeLarge
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
+            text: qsTr("Last Manual Reading")
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        LabelPL {
+            id: lblManualStressValue
+            width: parent.width
+            horizontalAlignment: Text.AlignLeft
+        }
+
+
     }
 
     function calculateZones() {
@@ -205,6 +221,11 @@ PagePL {
         }
     }
 
+    function updateManual() {
+        var dataPoints = dataSource.data(DataSource.StressManual, day);
+        lblManualStressValue.text = new Date(dataPoints[0].x) + " : " + dataPoints[0].y
+    }
+
     function updateGraphs() {
         graphStressAuto.updateGraph(day);
         graphStressSummary.updateGraph(day);
@@ -214,5 +235,6 @@ PagePL {
     Component.onCompleted: {
         day = new Date();
         updateGraphs();
+        updateManual()
     }
 }

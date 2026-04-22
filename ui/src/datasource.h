@@ -32,7 +32,7 @@ public:
     DataSource();
     void setConnection(KDbConnection *conn);
 
-    Q_INVOKABLE QVariant data(DataSource::Type type, const QDate  &day);
+    Q_INVOKABLE QVariant data(const DataSource::Type type, const QDate  &day);
 
 private:
     KDbConnection *m_conn = nullptr;
