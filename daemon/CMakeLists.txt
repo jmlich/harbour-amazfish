@@ -249,6 +249,8 @@ find_package(ZLIB REQUIRED)
 find_package(ICU REQUIRED COMPONENTS uc i18n data)
 find_package(KDb REQUIRED)
 
+target_compile_options(harbour-amazfishd PRIVATE -Wall -Wextra -Wpedantic)
+
 if(FLAVOR STREQUAL "silica")
     set(WATCHFISH_FEATURES "notificationmonitor;music;calendar;voicecall;soundprofile")
 
