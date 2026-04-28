@@ -46,6 +46,10 @@ QByteArray encryptDecrypt(QByteArray toEncrypt) {
 
 int main(int argc, char *argv[])
 {
+#ifdef PROJECT_GIT_VERSION
+    qDebug() << "Starting harbour-amazfish-ui " << PROJECT_GIT_VERSION;
+#endif
+
     QGuiApplication *app;
 #ifdef MER_EDITION_SAILFISH
     app = SailfishApp::application(argc, argv);
