@@ -337,6 +337,21 @@ PagePL {
                 app.pages.push(Qt.resolvedUrl("BipFirmwarePage.qml"))
             }
         }
+
+        Tile {
+            text: qsTr("App store")
+            // visible: _authenticated && supportsFeature(Amazfish.FEATURE_FILE_INSTALL)
+
+            contentItem: Image {
+                source: "../page-icons/icon-page-install.png"
+                anchors.fill: parent
+                fillMode: Image.PreserveAspectFit
+            }
+
+            onClicked: {
+                app.pages.push(Qt.resolvedUrl("AppStorePage.qml"))
+            }
+        }
         // }
     }
 
