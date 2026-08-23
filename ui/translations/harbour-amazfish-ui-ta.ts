@@ -487,27 +487,27 @@
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="8"/>
         <source>FitPub settings</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் அமைப்புக்கள்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="15"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>சேமி</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="30"/>
         <source>Instance URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>தனித்த வலத்தளமுகவரி URL:</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="37"/>
         <source>Username or Email:</source>
-        <translation type="unfinished"></translation>
+        <translation>பயனர்பெயர் அல்லது மின்னஞ்சல்:</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="44"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>கடவுச்சொல்:</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubSettingsPage.qml" line="51"/>
@@ -520,82 +520,82 @@
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="9"/>
         <source>FitPub Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் பதிவேற்றம்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="26"/>
         <source>Activity name for FitPub</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் க்கான செயல்பாட்டுப் பெயர்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="27"/>
         <source>Name</source>
-        <translation type="unfinished">பெயர்</translation>
+        <translation>பெயர்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="31"/>
         <source>Description</source>
-        <translation type="unfinished">விவரம்</translation>
+        <translation>விவரம்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="38"/>
         <source>Activity description for FitPub</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் க்கான செயல்பாட்டு விளக்கம்</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="46"/>
         <source>Type (FitPub)</source>
-        <translation type="unfinished"></translation>
+        <translation>வகை(பிட்பப்)</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="51"/>
         <source>Private</source>
-        <translation type="unfinished">தனிப்பட்ட</translation>
+        <translation>தனிப்பட்ட</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="56"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>பதிவேற்று</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="89"/>
         <source>Not linked to FitPub</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் உடன் இணைக்கப்படவில்லை</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="94"/>
         <source>Authenticating...</source>
-        <translation type="unfinished"></translation>
+        <translation>உறுதிப்படுத்துகிறது...</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="105"/>
         <source>Authentication failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>உறுதிப்படுத்தல் தோல்விய்ற்றது: </translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="122"/>
         <source>Uploading data...</source>
-        <translation type="unfinished"></translation>
+        <translation>தரவு பதிவேற்றப்படுகிறது...</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="137"/>
         <source>Upload failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>பதிவேற்றம் தோல்வியுற்றது: </translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="153"/>
         <source>Updating activity metadata...</source>
-        <translation type="unfinished"></translation>
+        <translation>செயல்பாட்டு மெட்டாதரவு புதிப்பிக்கப்படுகிறது...</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="163"/>
         <source>Activity upload complete</source>
-        <translation type="unfinished"></translation>
+        <translation>செயல்பாட்டு பதிவேற்றம் முழுமையுற்றது</translation>
     </message>
     <message>
         <location filename="../qml/pages/FitPubUploadPage.qml" line="166"/>
         <source>Update failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>புதுப்பித்தல் தோல்வியுற்றது: </translation>
     </message>
 </context>
 <context>
@@ -1515,7 +1515,7 @@
     <message>
         <location filename="../qml/pages/Settings-menu.qml" line="72"/>
         <source>FitPub</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப்</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings-menu.qml" line="73"/>
@@ -1813,7 +1813,7 @@
     <message>
         <location filename="../qml/pages/SportPage.qml" line="387"/>
         <source>Send to FitPub</source>
-        <translation type="unfinished"></translation>
+        <translation>பிட்பப் பிற்கு அனுப்பு</translation>
     </message>
     <message>
         <source>Max Pace</source>
@@ -2247,7 +2247,7 @@ Please consider making a donation if you use this functionality.</source>
         <location filename="../qml/components/Translation.js" line="14"/>
         <location filename="../qml/components/Translation.js" line="14"/>
         <source>Exercise</source>
-        <translation>உடற்பயிற்சி</translation>
+        <translation>பயிற்சிபாடம்</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="15"/>
