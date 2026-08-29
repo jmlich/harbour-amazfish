@@ -95,7 +95,7 @@
     <message>
         <location filename="../src/devices/banglejsdevice.cpp" line="349"/>
         <source>Downloading activity data</source>
-        <translation type="unfinished"></translation>
+        <translation>下载活动数据中</translation>
     </message>
     <message>
         <location filename="../src/devices/banglejsdevice.cpp" line="370"/>
