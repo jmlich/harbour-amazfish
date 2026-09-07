@@ -74,14 +74,16 @@ void UARTService::characteristicChanged(const QString &c, const QByteArray &valu
         QByteArray data;
         data.reserve(value.length());
         for (int i = 0; i < value.length(); ++i) {
-            const char ch = value.at(i);
-            if (ch == 0x13) {        // XOFF
-                m_txPaused = true;
-            } else if (ch == 0x11) { // XON
-                m_txPaused = false;
-            } else {
-                data.append(ch);
-            }
+          const char ch = value.at(i);
+          if (ch == 0x13) { // XOFF
+            qDebug() << Q_FUNC_INFO << "XOFF";
+            m_txPaused = true;
+          } else if (ch == 0x11) { // XON
+            qDebug() << Q_FUNC_INFO << "XON";
+            m_txPaused = false;
+          } else {
+            data.append(ch);
+          }
         }
 
         m_incomingJson += data;
