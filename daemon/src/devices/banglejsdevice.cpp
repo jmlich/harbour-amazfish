@@ -1193,6 +1193,7 @@ void BangleJSDevice::syncCalendarWithDeviceIds(QList<int> &deviceIds) {
             removeEventReminder(deviceId);
         }
         m_event_id_map.clear();
+        m_event_sent.clear();
         setOperationRunning(false);
         return;
     }
@@ -1225,9 +1226,10 @@ void BangleJSDevice::syncCalendarWithDeviceIds(QList<int> &deviceIds) {
     }
     for (const QString &uid : toRemove) {
         m_event_id_map.remove(uid);
+        m_event_sent.remove(uid);
     }
 
-    // Step 3: Send events missing from device
+    // Step 3: Send events missing from device, and changed events again with the same id
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QSet<int> deviceIdSet = deviceIds.toSet();
 #else
@@ -1241,9 +1243,14 @@ void BangleJSDevice::syncCalendarWithDeviceIds(QList<int> &deviceIds) {
         }
 
         int id = m_event_id_map[uid];
-        if (!deviceIdSet.contains(id)) { // insert
+        QString fields = QStringList({ event.title(), event.description(), event.location(),
+                                         event.start().toString(Qt::ISODate), event.end().toString(Qt::ISODate),
+                                         event.alertTime().toString(Qt::ISODate), event.allDay() ? "1" : "0" })
+                             .join('\n');
+        if (!deviceIdSet.contains(id) || m_event_sent.value(uid) != fields) {
             sendCalendarEvent(id, event);
-        } // else update
+            m_event_sent.insert(uid, fields);
+        }
     }
 
     setOperationRunning(false);
