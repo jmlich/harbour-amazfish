@@ -35,7 +35,7 @@ Amazfish::Features BangleJSDevice::supportedFeatures() const
         | Amazfish::Feature::FEATURE_EVENT_REMINDER
         | Amazfish::Feature::FEATURE_MUSIC_CONTROL
         // | Amazfish::Feature::FEATURE_BUTTON_ACTION
-        // | Amazfish::Feature::FEATURE_SCREENSHOT
+        | Amazfish::Feature::FEATURE_SCREENSHOT
         // | Amazfish::Feature::FEATURE_FILE_INSTALL
         ;
 
@@ -174,6 +174,7 @@ void BangleJSDevice::initialise()
     if (uart){
         connect(uart, &UARTService::message, this, &BangleJSDevice::message, Qt::UniqueConnection);
         connect(uart, &UARTService::jsonRx, this, &BangleJSDevice::handleRxJson, Qt::UniqueConnection);
+        connect(uart, &UARTService::screenshotRx, this, &BangleJSDevice::screenshotReceived, Qt::UniqueConnection);
 
         uart->enableNotification(UARTService::UUID_CHARACTERISTIC_UART_RX);
         uart->tx(QByteArray(1, 0x03)); //Clear line)
@@ -441,6 +442,38 @@ void BangleJSDevice::prepareFirmwareDownload(const AbstractFirmwareInfo *info)
 void BangleJSDevice::startDownload()
 {
     qDebug() << Q_FUNC_INFO;
+}
+
+void BangleJSDevice::requestScreenshot()
+{
+    qDebug() << Q_FUNC_INFO;
+    UARTService *uart = qobject_cast<UARTService*>(service(UARTService::UUID_SERVICE_UART));
+    if (!uart) {
+        return;
+    }
+    // The watch answers with one line "data:image/bmp;base64,...", like for Gadgetbridge
+    uart->tx("\x10g.dump()\n");
+}
+
+void BangleJSDevice::screenshotReceived(const QByteArray &bmp)
+{
+    QString filename = "screenshot_" + QDateTime::currentDateTime().toString("yyyyMMdd-HHmmss") + ".bmp";
+    QDir pictures(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+    if (!pictures.mkpath(".")) {
+        qWarning() << "Cannot create" << pictures.absolutePath();
+        return;
+    }
+
+    QFile file(pictures.absoluteFilePath(filename));
+    if (!file.open(QIODevice::WriteOnly)) {
+        qWarning() << "Cannot open" << file.fileName();
+        return;
+    }
+    file.write(bmp);
+    file.close();
+    qDebug() << Q_FUNC_INFO << file.fileName() << bmp.size();
+
+    emit message(tr("Stored %1...").arg(filename));
 }
 
 void BangleJSDevice::refreshInformation()

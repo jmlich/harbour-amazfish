@@ -64,6 +64,8 @@ void UARTService::handleRx(const QString &json)
         // JSON - we hope!
         QJsonObject obj = ObjectFromString(json);
         emit jsonRx(obj);
+    } else if (json.startsWith("data:image/bmp;base64,")) { // answer to g.dump()
+        emit screenshotRx(QByteArray::fromBase64(json.mid(22).toLatin1()));
     }
 }
 
