@@ -71,6 +71,7 @@ public:
     void incomingCallEnded() override;
 
     void refreshInformation() override;
+    void immediateAlert(int level) override;
     void requestScreenshot() override;
     QString information(Amazfish::Info i) const override;
 

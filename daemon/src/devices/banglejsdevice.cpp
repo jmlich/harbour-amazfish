@@ -492,6 +492,20 @@ void BangleJSDevice::screenshotReceived(const QByteArray &bmp)
     emit message(tr("Stored %1...").arg(filename));
 }
 
+// Find my watch: the watch vibrates every second until level 0
+void BangleJSDevice::immediateAlert(int level)
+{
+    qDebug() << Q_FUNC_INFO << level;
+    UARTService *uart = qobject_cast<UARTService*>(service(UARTService::UUID_SERVICE_UART));
+    if (!uart) {
+        return;
+    }
+    QJsonObject o;
+    o.insert("t", "find");
+    o.insert("n", level > 0);
+    uart->txJson(o);
+}
+
 void BangleJSDevice::refreshInformation()
 {
     qDebug() << Q_FUNC_INFO;
