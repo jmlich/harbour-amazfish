@@ -27,6 +27,7 @@ public:
 
     Q_SIGNAL void serviceEvent(char event);
     Q_SIGNAL void jsonRx(const QJsonObject &json);
+    Q_SIGNAL void screenshotRx(const QByteArray &bmp);
 
 private:
     void characteristicChanged(const QString &c, const QByteArray &value);
