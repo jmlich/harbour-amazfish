@@ -581,6 +581,8 @@ void BangleJSDevice::handleRxJson(const QJsonObject &json)
 
         }
 
+    } else if (t == "weather") { // the weather app asks for an update
+        emit deviceEvent(AbstractDevice::EVENT_WEATHER_REQUEST);
     } else if (t == "force_calendar_sync") {
 
     QList<int> deviceIds;

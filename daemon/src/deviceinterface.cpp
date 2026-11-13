@@ -964,6 +964,9 @@ void DeviceInterface::deviceEvent(AbstractDevice::Event event)
     case AbstractDevice::EVENT_CANCEL_FIND_PHONE:
         m_findDeviceTimer->stop();
         break;
+    case AbstractDevice::EVENT_WEATHER_REQUEST:
+        m_currentWeather.refresh();
+        break;
     }
 }
 

@@ -35,7 +35,8 @@ public:
         EVENT_ANSWER_CALL,
         EVENT_IGNORE_CALL,
         EVENT_FIND_PHONE,
-        EVENT_CANCEL_FIND_PHONE
+        EVENT_CANCEL_FIND_PHONE,
+        EVENT_WEATHER_REQUEST
     };
     Q_ENUM(Event)
 
