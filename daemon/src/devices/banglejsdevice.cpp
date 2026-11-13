@@ -612,7 +612,13 @@ void BangleJSDevice::handleRxJson(const QJsonObject &json)
 
 //            emit deviceEvent(AbstractDevice::EVENT_APP_MUSIC);
 
-//    } else if (t == "call") {
+    } else if (t == "call") { // answer from the call screen on the watch
+        QString answer = json.value("n").toString();
+        if (answer == "ACCEPT") {
+            emit deviceEvent(AbstractDevice::EVENT_ANSWER_CALL);
+        } else if (answer == "REJECT") {
+            emit deviceEvent(AbstractDevice::EVENT_DECLINE_CALL);
+        }
    } else if (t == "notify") {
         qDebug() << "notify" << json.value("n");
        // "id":56,"n":"DISMISS","t":"notify"
