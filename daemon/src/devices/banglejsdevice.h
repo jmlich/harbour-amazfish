@@ -145,6 +145,7 @@ private:
     void sendCalendarEvent(int id, const watchfish::CalendarEvent &event); // send single event (create or replace)
     void removeEventReminder(int id); // remove single event from device
     QMap<QString, int> m_event_id_map; // maps calendar event uid to device id
+    QMap<QString, QString> m_event_sent; // maps calendar event uid to the fields last sent
     std::optional<QList<watchfish::CalendarEvent>> m_eventlist; // list of all events which should go to device
     int m_next_event_id = 1;
 
