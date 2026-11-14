@@ -123,6 +123,9 @@ QString PebbleDevice::information(Amazfish::Info i) const
     case Amazfish::Info::INFO_HWVER:
         return info->hardwareRevision();
         break;
+    case Amazfish::Info::INFO_SWVER:
+        return info->softwareRevision();
+        break;
     case Amazfish::Info::INFO_MANUFACTURER:
         return info->manufacturerName();
         break;
