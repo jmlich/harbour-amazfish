@@ -674,6 +674,7 @@ void BangleJSDevice::handleRxJson(const QJsonObject &json)
         int steps = json.value("stp").toInt();      // steps
         int mov = json.value("mov").toInt();        // movement intensity
         int rt = json.value("rt").toInt();          // realtime
+        double cal = json.value("cal").toDouble(); // active calories, only in live records
         QString act;
         if (json.keys().contains("act")) {
             act = json.value("act").toString();
@@ -690,7 +691,7 @@ void BangleJSDevice::handleRxJson(const QJsonObject &json)
                 m_stepsDay = QDate::currentDate();
             }
             m_steps += steps;
-            qDebug() << "Activity " << actDate << kind << mov << m_steps << m_heartrate  ;
+            qDebug() << "Activity " << actDate << kind << mov << m_steps << m_heartrate << cal;
             emit informationChanged(Amazfish::Info::INFO_HEARTRATE, QString::number(m_heartrate));
             emit informationChanged(Amazfish::Info::INFO_STEPS, QString::number(m_steps));
         }
