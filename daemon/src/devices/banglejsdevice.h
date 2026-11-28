@@ -71,6 +71,7 @@ public:
     void incomingCallEnded() override;
 
     void refreshInformation() override;
+    void requestScreenshot() override;
     QString information(Amazfish::Info i) const override;
 
     Q_SLOT void authenticated(bool ready);
@@ -104,6 +105,7 @@ private:
     void initialise();
     Q_SLOT void serviceEvent(uint8_t event);
     Q_SLOT void handleRxJson(const QJsonObject &json);
+    Q_SLOT void screenshotReceived(const QByteArray &bmp);
 
     void downloadActivityData();
     void downloadSportsData();
