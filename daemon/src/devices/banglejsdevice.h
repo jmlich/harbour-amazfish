@@ -72,6 +72,7 @@ public:
 
     void refreshInformation() override;
     void requestScreenshot() override;
+    void immediateAlert(int level) override;
     QString information(Amazfish::Info i) const override;
 
     Q_SLOT void authenticated(bool ready);
